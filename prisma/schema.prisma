@@ -53,10 +53,11 @@ model WorkoutDay {
   exercises                  WorkoutExercises[]
   isRest                     Boolean            @default(false)
   estimatedDurationInSeconds Int                @default(0)
+  coverImageUrl              String?
   createdAt                  DateTime           @default(now()) @db.Timestamptz()
   updatedAt                  DateTime           @updatedAt @db.Timestamptz()
 
-  workoutSessions WorkoutSession[]
+  sessions WorkoutSession[]
 }
 
 model WorkoutExercises {
