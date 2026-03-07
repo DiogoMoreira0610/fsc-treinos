@@ -1,6 +1,6 @@
 import {
-  ConflictError,
   NotFoundError,
+  SessionAlreadyStartedError,
   WorkoutPlanNotActiveError,
 } from "../errors/index.js";
 import { prisma } from "../lib/db.js";
@@ -45,7 +45,7 @@ export class StartWorkoutSession {
     );
 
     if (hasStartedSession) {
-      throw new ConflictError(
+      throw new SessionAlreadyStartedError(
         "This workout day already has a started session",
       );
     }
